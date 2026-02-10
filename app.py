@@ -23,7 +23,8 @@ def get_db():
     user=os.getenv("root"),
     password=os.getenv("tSSysXgkpkInTFqaWtcZljLtiywHPoWA"),
     database=os.getenv("3306"),
-    port=int(os.getenv("MYSQLPORT"))
+    port=int(os.getenv("MYSQL_PORT", 3306))
+
 )
 
  cursor = conn.cursor()
