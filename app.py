@@ -17,8 +17,8 @@ app.secret_key = "myverysecretkey123"
 #     )
 import os
 import mysql.connector
-
-conn = mysql.connector.connect(
+def get_db():
+ conn = mysql.connector.connect(
     host=os.getenv("mysql.railway.internal"),
     user=os.getenv("root"),
     password=os.getenv("tSSysXgkpkInTFqaWtcZljLtiywHPoWA"),
@@ -26,7 +26,7 @@ conn = mysql.connector.connect(
     port=int(os.getenv("MYSQLPORT"))
 )
 
-cursor = conn.cursor()
+ cursor = conn.cursor()
 
 
 @app.route('/')
