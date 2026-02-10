@@ -251,4 +251,4 @@ def remove_from_wishlist():
 
 
 if __name__ == '__main__':
-    app.run(debug)
+    app.run()
