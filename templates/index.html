@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Riri's Groceries</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<link rel="icon" type ="image/svg+xml" href="{{ url_for('static', filename='favicon.svg') }}">
+</head>
+
+<body>
+    <!-- HEADER PART -->
+    <header>
+        <nav class="navbar flex between wrapper">
+            
+            <a href="#" class="logo"><i>Picksy...</i></a>
+            <!-- DESKTOP MENU -->
+
+            <ul class="navlist flex gap-3">
+                <li>
+                    <a href="#"> Home</a>
+                </li>
+                <li>
+                    <a href="#item"> Items</a>
+                </li>
+                <li>
+                    <a href="#about"> About Us</a>
+                </li>
+                <li>
+                    <a href="#contact"> Contacts</a>
+                </li>
+            </ul>
+
+            <div class="desktop-action flex gap-1">
+                <a href="#" class="cart-icon">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span class="cart-value">0</span>
+                </a>
+                <a href="#" class="hamburger">
+                    <i class="fa-solid fa-bars"></i>
+                </a>
+                {% if session.get('email') %}
+                <div class="profile-menu">
+                    <div class="profile-icon"> {{ user.full_name[0] | upper }}</div>
+                    <div class="profile-dropdown">
+                        <a href="/profile">My Profile</a>
+                        <a href="/orders">My Orders</a>
+                        <a href="/wishlist">Wishlist</a>
+                        <a href="/logout">Logout</a>
+                    </div>
+                </div>
+                {% else %}
+                <a href="#" class="btn">
+                    Sign in &nbsp;
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                </a>
+                {% endif %}
+            </div>
+
+            <!-- MOBILE MENU -->
+            <ul class="mobile-menu">
+                <li>
+                    <a href="#"> Home</a>
+                </li>
+                <li>
+                    <a href="#item"> Items</a>
+                </li>
+                <li>
+                    <a href="#about"> About Us</a>
+                </li>
+                <li>
+                    <a href="#contact"> Contacts</a>
+                </li>
+                <li>
+                    <a href="#" class="btn">
+                        Sign in
+                        &nbsp;
+                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    </a>
+                </li>
+            </ul>
+
+        </nav>
+
+    </header>
+    <!-- SECTIONS PARTS -->
+    <main>
+        <section>
+            <div class="hero-section flex wrapper gap-4">
+                <div class="content">
+                    <h1> From Farm to Your
+                        <span>Door</span>
+                    </h1>
+                    <p class="para">
+                        We believe everyone deserves fresh,<br>
+                        High-quality groceries without the hassle.
+                    </p>
+                    <div class="flex gap-2">
+                        <a href="#" class="btn"> Order Now</a>
+
+                        <a href="#" class="social-icon"><i class="fa-brands fa-facebook"></i></a>
+
+                        <a href="#" class="social-icon"><i class="fa-brands fa-x-twitter"></i></a>
+
+                        <a href="#" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
+
+                        <a href="#" class="social-icon"><i class="fa-brands fa-google-plus-g"></i></a>
+                    </div>
+
+                </div>
+                <div class="image-container">
+                    <img src="{{ url_for('static', filename='images/Delivery boy1.png') }}">
+
+                </div>
+            </div>
+
+        </section>
+
+        <section>
+            <div class="wrapper p-top">
+                <div class="text-center">
+                    <h5> Our Services</h5>
+                    <h2> How does it work </h2>
+
+                </div>
+                <div class="flex text-center gap-3 mt-4">
+                    <div class="service-card">
+                        <div class="my-image service-img">
+                            <img src="{{ url_for('static', filename='images/EasyToOrder.png') }}">
+                        </div>
+                        <div>
+                            <p>You only need a few steps for ordering food</p>
+                        </div>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="my-image service-img">
+                            <img src="{{ url_for('static', filename='images/BestQuality.png') }}">
+                        </div>
+                        <div>
+                            <p>Freshness You’ll Love, Quality You Trust</p>
+                        </div>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="my-image service-img">
+                            <img src="{{ url_for('static', filename='images/FastDelivery.png') }}">
+                        </div>
+                        <div>
+                            <p>Groceries That Love to Race</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="item">
+            <div class="wrapper p-top">
+                <div class="text-center">
+                    <h3>ITEMS</h3>
+                </div>
+                <div class="card-list text-center mt-4">
+                    <!-- <div class = "order-card">
+                        <div class = "card-image">
+                            <img src = "images\Egg-removebg-preview.png">
+                        </div>
+                        <h4>Egg</h4>
+                        <h4 class ="price">30 Rs.</h4>
+                        <a href = "#" class = "btn" >Add to cart </a>
+                    </div> -->
+                </div>
+            </div>
+            <!-- CART TAB -->
+            <div class="cart-tab">
+                <h3>Your Cart</h3>
+
+                <div class="cart-list">
+                    <!-- <div class = "item">
+                            <div class = "item-image">
+                                <img src = "static/images/honey.jpg">
+                            </div>
+
+                            <div>
+                                <h4>Honey</h4>
+                                <h4 class = "item-total">300 Rs.</h4>
+                            </div>
+                            <div class = "flex">
+                                <a href = "#" class = "quantity-btn">
+                                <i class="fa-solid fa-minus"></i>
+                                </a>
+
+                                <a href = "#" class = "quantity-btn">
+                                <i class="fa-solid fa-plus"></i>
+                                </a>
+                            </div>
+                        </div> -->
+                </div>
+
+                <div class="total-container">
+                    <h4>Total:</h4>
+                    <h4 class="cart-total">0 Rs.</h4>
+                </div>
+
+                <div class="btn-container flex gap-2">
+                    <a href="#" class="btn close-btn"> Close</a>
+                    <form method="POST" action="/checkout" id="checkoutForm">
+                        <input type="hidden" name="total_amount" id="totalAmountInput">
+                        <input type="hidden" name="cart_data" id="cartDataInput">
+                        <button type="submit" class="btn checkout-btn">Order</button>
+                    </form>
+                </div>
+            </div>
+            </div>
+        </section>
+
+        <section id="about" class="about-section">
+            <div class="container">
+                <div class="about-content">
+                    <h2>About Pickys</h2>
+                    <p>
+                        At Groceries, we believe grocery shopping should be simple, convenient, and reliable.
+                        Our platform was created to bring fresh fruits, vegetables, and daily essentials
+                        right to your doorstep with just a few clicks.
+                    </p>
+                    <p>
+                        We work closely with trusted suppliers to ensure every product meets our standards
+                        of freshness and quality. Whether you're stocking up for the week or ordering
+                        last-minute essentials, we make sure your groceries reach you on time and in perfect condition.
+                    </p>
+                    <p>
+                        Our goal is to save you time and effort while providing a smooth and secure online
+                        shopping experience. From easy ordering to fast delivery, we are here to make
+                        everyday shopping easier for you and your family.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact-page wrapper">
+            <div class="contact-wrapper">
+                <!-- LEFT SIDE TEXT-->
+                <div class="contact-left">
+                    <h2>Contact Us</h2>
+                    <p>
+                        Need to get in touch with us? Either fill out form with your inquiry or find the you'd like to
+                        contact below.
+                    </p>
+
+                    <ul class="contact-details">
+                        <li><strong>Email: </strong> support@picksy.com </li>
+                        <li><strong>Contact No.: </strong> +91 93017XXXXX </li>
+                        <li><strong>Location: </strong> India </li>
+                    </ul>
+                </div>
+                <!-- RIGHT SIDE FORM -->
+                <div class="contact-right">
+                    <form method="POST" action="/contact">
+                        <div class="contact-form">
+                            <div class="input-group">
+                                <label>First Name*</label>
+                                <input type="text" name="first_name" required>
+                            </div>
+                            <div class="input-group">
+                                <label>Last Name*</label>
+                                <input type="text" name="last_name" required>
+                            </div>
+                            <div class="input-group">
+                                <label>Email*</label>
+                                <input type="email" name="email" required>
+                            </div>
+                            <div class="input-group">
+                                <label>What can we help you with?</label>
+                                <textarea name="message" rows="4"></textarea>
+                            </div>
+                            <button type="submit" class="btn">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER PART -->
+    <footer>
+        <div class="footer-container">
+            <div class="flex wrapper gap-4">
+                <div class="footer-wrapper">
+                    <a href="#" class="logo"> Groceries</a>
+
+                    <p class="mt-one-half">
+                        We believe everyone deserves fresh,<br>
+                        High-quality groceries without the hassle.
+                    </p>
+
+                    <div class="flex gap-2 mt-one-half">
+                        <a href="#" class="social-icon"><i class="fa-brands fa-facebook"></i></a>
+
+                        <a href="#" class="social-icon"><i class="fa-brands fa-x-twitter"></i></a>
+
+                        <a href="#" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
+
+                        <a href="#" class="social-icon"><i class="fa-brands fa-google-plus-g"></i></a>
+                    </div>
+                </div>
+
+                <ul class="footer-wrapper">
+                    <li>
+                        <h4>Our Items</h4>
+                    </li>
+                    <li class="mt-one-half">
+                        <a href="#" class="footer-link">Special</a>
+                    </li>
+                    <li class="mt-one-half">
+                        <a href="#" class="footer-link">Popular</a>
+                    </li>
+                    <li class="mt-one-half">
+                        <a href="#" class="footer-link">Category</a>
+                    </li>
+                </ul>
+
+                <ul class="footer-wrapper">
+                    <li>
+                        <h4>Support</h4>
+                    </li>
+                    <li class="mt-one-half">
+                        <a href="#" class="footer-link">Account</a>
+                    </li>
+                    <li class="mt-one-half">
+                        <a href="#" class="footer-link">Support Center</a>
+                    </li>
+                    <li class="mt-one-half">
+                        <a href="#" class="footer-link">Contact</a>
+                    </li>
+                </ul>
+
+                <ul class="footer-wrapper">
+                    <li>
+                        <h4>Company</h4>
+                    </li>
+                    <li class="mt-one-half">
+                        <a href="#" class="footer-link">Why Us</a>
+                    </li>
+                    <li class="mt-one-half">
+                        <a href="#" class="footer-link">Partner with us</a>
+                    </li>
+                    <li class="mt-one-half">
+                        <a href="#" class="footer-link">FAQs</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+    {% with messages = get_flashed_messages(with_categories = true) %}
+    {% for category, message in messages %}
+    {% if category == 'contact_success' %}
+    <div id="popup-overlay" class="popup-overlay">
+        <div class="popup-box">
+            <p> {{ message }} </p>
+            <button type="button" onclick="closePopup()" class="btn">OK</button>
+        </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+    {% endwith %}
+
+    {% with messages = get_flashed_messages(with_categories=True) %}
+    {% for category, data in messages %}
+    {% if category in ['order_success', 'order_error', 'contact_success'] %}
+    <div class="popup-overlay">
+        <div class="popup-box">
+
+            {% if category == 'order_success' %}
+            <h2>🎉 Order Placed!</h2>
+            <p>Your order <strong>#{{ data.order_id }}</strong> has been placed.</p>
+            <p>Total Amount: <strong>₹{{ data.total }}</strong></p>
+            <div class="popup-actions">
+                <a href="/orders" class="btn">View Orders</a>
+                <button type="button" onclick="closePopup()" class="btn">Continue Shopping</button>
+            </div>
+
+            {% elif category == 'order_error' %}
+            <h2>⚠️ Cannot Place Order</h2>
+            <p>{{ data }}</p>
+            <button type="button" onclick="closePopup()" class="btn">OK</button>
+
+            {% elif category == 'contact_success' %}
+            <h2>📩 Message Sent</h2>
+            <p>{{ data }}</p>
+            <button type="button" onclick="closePopup()" class="btn">OK</button>
+
+            {% endif %}
+
+        </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+    {% endwith %}
+
+</body>
+
+</html>

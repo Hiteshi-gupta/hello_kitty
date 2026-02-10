@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <section class="wrapper p-top wishlist-page">
+        <div class="text-center">
+            <h2>❤️ My Wishlist</h2>
+            <p>Your saved favorite items</p>
+        </div>
+
+        <div class="card-list mt-4">
+            {% for item in items %}
+            <div class="order-card">
+
+                <div class="card-image">
+                    <img src="{{ item.image }}" alt="{{ item.product_name }}">
+                </div>
+
+                <div class="card-info">
+                    <h4 class="product-name">{{ item.product_name }}</h4>
+                    <h4 class="price">Rs. {{ item.price }}</h4>
+                </div>
+
+                <div class="card-actions">
+                    <a href="#" class="btn move-cart-btn" data-name="{{ item.product_name }}"
+                        data-price="{{ item.price }}" data-image="{{ item.image }}">
+                        Move to Cart
+                    </a>
+
+                </div>
+
+            </div>
+            {% else %}
+            <p class="empty-msg">Your wishlist is empty 💔</p>
+            {% endfor %}
+        </div>
+    </section>
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+
+</body>
+
+</html>

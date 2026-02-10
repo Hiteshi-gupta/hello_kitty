@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Riri's Groceries Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <link rel="icon" type ="image/svg+xml" href="{{ url_for('static', filename='login-favicon.svg') }}">
+</head>
+
+<body>
+    <div class="login-page">
+        <div class="login-container">
+            <h2>Login</h2>
+            <form action="/login" method="POST">
+                <div class="input-group">
+                    <label>Email</label>
+                    <input type="email" name  = "email" placeholder="Enetr Your email" required>
+                </div>
+                <div class="input-group">
+                    <label>Password</label>
+                    <input type="password" name = "password" placeholder="Enter Your password" required>
+                </div>
+
+                <button class="btn" type="submit">Login</button>
+            </form>
+            <p class = "text">
+                Don't have an account?
+                <a href = "/register">Sign up</a>
+            </p>
+        </div>
+    </div>
+</body>
+
+</html>

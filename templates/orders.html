@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Orders</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename = 'style.css')}}">
+</head>
+
+<body>
+    <section class="orders-page">
+        <h3>Your Order History</h3>
+
+        {% if orders %}
+        <div class="orders-list">
+            {% for order in orders %}
+            <div class="order-card">
+                <h4>Order #{{order.id}} </h4>
+                <p><strong>Date:</strong>{{order.created_at}}</p>
+
+                <div class="order-items">
+                    {% for item in order.order_items %}
+                    <div class="order-item-row">
+                        <div class="order-item-left">
+                        <img src = "{{ url_for('static', filename= item.image.replace('static/','')) }}" 
+                        alt="{{ item.product_name }}" 
+                        class="order-item-img">
+                        <span class = "order-item-name">{{ item.product_name}}</span>
+                        </div>
+                        <span class =" order-item-right">Qty: {{item.quantity}}</span>
+                        <span>Rs{{item.price}}</span>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                <p class="order-total"><strong>Total:</strong>Rs{{order.total_amount}}</p>
+
+
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <p>You have no orders yet.</p>
+        {% endif %}
+    </section>
+</body>
+
+</html>

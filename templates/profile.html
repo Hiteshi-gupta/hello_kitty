@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>My Profile</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" type ="image/svg+xml" href="{{ url_for('static', filename='login-favicon.svg') }}">
+</head>
+
+<body>
+
+<section class="wrapper" style="max-width:700px; padding-top:3rem;">
+    
+    <div class="text-center">
+        <h2>My Profile</h2>
+        <p>Manage your personal and delivery details</p>
+    </div>
+
+    <div class="mt-4">
+
+        <div class="service-card" style="padding:1.5rem;">
+            <p><strong>Name:</strong> {{ user.full_name }}</p>
+            <p><strong>Email:</strong> {{ user.email }}</p>
+        </div>
+
+        <form method="POST" class="mt-4">
+
+            <div class="input-group">
+                <label>Phone Number</label>
+                <input type="text" name="phone" value="{{ user.phone or '' }}">
+            </div>
+
+            <div class="input-group">
+                <label>Address</label>
+                <textarea name="address">{{ user.address or '' }}</textarea>
+            </div>
+
+            <div class="input-group">
+                <label>City</label>
+                <input type="text" name="city" value="{{ user.city or '' }}">
+            </div>
+
+            <div class="input-group">
+                <label>Pincode</label>
+                <input type="text" name="pincode" value="{{ user.pincode or '' }}">
+            </div>
+
+            <button type="submit" class="btn">Save Details</button>
+        </form>
+
+    </div>
+
+</section>
+
+</body>
+</html>

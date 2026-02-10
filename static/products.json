@@ -1,0 +1,87 @@
+[
+    {
+        "id" : 1,
+        "name": "Apple",
+        "price": "180 Rs./Kg",
+        "image": "static/images/Apples.jpg"
+    },
+    {
+          "id": 2,
+          "name": "Onion",
+          "price": "30 Rs./Kg",
+          "image": "static/images/Onion.jpeg"
+    },
+    {
+          "id": 3,
+          "name": "Besan",
+          "price": "150 Rs./Kg",
+          "image": "static/images/Besan.jpeg"
+    },
+    {
+          "id": 4,
+          "name": "Bhindi",
+          "price": "50 Rs./Kg",
+          "image": "static/images/Bhindi.jpeg"
+    },
+    {
+          "id": 5,
+          "name": "Garlic",
+          "price": "30 Rs./ Kg",
+          "image": "static/images/Garlic.jpeg"
+    },
+    {
+          "id": 6,
+          "name": "Ginger",
+          "price": " 91 Rs./ Kg",
+          "image": "static/images/Ginger.jpeg"
+    },
+    {
+          "id": 7,
+          "name": "Green Grapes",
+          "price": "90 Rs./ Kg",
+          "image": "static/images/Greengrapes.jpeg"
+    },
+    {
+          "id": 8,
+          "name": "Mango",
+          "price": "80 Rs./ Kg",
+          "image": "static/images/mango.jpeg"
+    },
+    {
+          "id": 9,
+          "name": "Potato",
+          "price": "50 Rs./ Kg",
+          "image": "static/images/Potato.jpeg"
+    },
+    {
+          "id": 10,
+          "name": "Wheat Flour",
+          "price": "412 Rs./ Kg",
+          "image": "static/images/SilverCoinAata.jpeg"
+    },
+    {
+          "id": 11,
+          "name": "Tea",
+          "price": "630 Rs./ Kg",
+          "image": "static/images/Tea.jpeg"
+    },
+    {
+          "id": 12,
+          "name": "Tomato",
+          "price": "34 Rs./ Kg",
+          "image": "static/images/Tomato.jpeg"
+    },
+    {
+          "id": 13,
+          "name": "Egg",
+          "price": "225 Rs.",
+          "image": "static/images/Egg.png"
+    },
+    {
+          "id": 14,
+          "name": "Honey",
+          "price": "42 Rs.",
+          "image": "static/images/Honey.jpeg"
+    }
+
+]
